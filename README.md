@@ -81,10 +81,15 @@ where $BA(t,x)$ refers to the cumulative basal area of all species above the DBH
 
 Then they solve this numerically with an upwind scheme.
 
-TODO: with Julia we can do this with https://sciml.github.io/MethodOfLines.jl/dev/tutorials/PIDE/#integral
+TODO: e.g when using Julia we can do this with MethodOfLines.jl capable of solving [PIDEs](https://sciml.github.io/MethodOfLines.jl/dev/tutorials/PIDE/#integral).
+
+NOTES: there exist tailor-made space discretizations for the general type of these equations (McKendrick-von Foerster Partial Differential Equation (PDE)). 
+E.g. see the methods implemented by [libpspm](https://jaideep777.github.io/libpspm/articles/what_is_pspm.html). 
+(NOTE however, that this appears to support PDEs but not PIDEs, i.e. interaction between size classes or between species is not implemented. 
+NOTE: this might be incorrect. There appears to be support for integrals from `x` to `xmax` by using [`integrate_wudx_above()`](https://jaideep777.github.io/libpspm/articles/size_integral.html#computing-partial-state-integrals).)
 
 #### BiomeE
-A simplified version of BiomeE could be implemented by making a PDE in dimensions of DBH $x$ and height $y$, and then reducing the growth by the cumulative LAI of all trees above height $y$. TODO....
+A simplified version of [BiomeE](https://github.com/geco-bern/rsofun) could be implemented by making a PDE in dimensions of DBH $x$ and height $y$, and then reducing the growth by the cumulative LAI of all trees above height $y$. TODO....
 
 #### P-Model dependent growth
 TODO....
